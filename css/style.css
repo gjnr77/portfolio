@@ -26,10 +26,11 @@
 #wrap #header .header-top .gap > .top-container > .col3 > span > a > i {color:#fff;}
 
 #wrap #header .header-bottom {width:100%;height:80px;background:#fff;}
-#wrap #header .header-bottom.addNavFixed {position:fixed;top:0;left:0;}
+#wrap #header .header-bottom.addNavFixed {position:fixed;top:41px;left:0;}
 #wrap #header .header-bottom .gap {padding:0 15px;}
 #wrap #header .header-bottom .gap > .bottom-container {width:100%;max-width:1140px;height:80px;text-align:center;margin:0 auto;}
 #wrap #header .header-bottom .gap > .bottom-container > .logo-box {float:left;margin-left:-153px;}
+#wrap #header .header-bottom .gap > .bottom-container > .logo-box.addNavFixed {float:left;margin-left:-153px;}
 #wrap #header .header-bottom .gap > .bottom-container > .logo-box > span {display:block;width:111px;line-height:80px;}
 #wrap #header .header-bottom .gap > .bottom-container > .logo-box > span > a {display:inline-block;width:100%;}
 #wrap #header .header-bottom .gap > .bottom-container > .logo-box > span > a img {width:100%;}
@@ -151,8 +152,8 @@
 #wrap #main #section1 .wrap .gap .container .slide-container .slide-gap .slide-view .slide-wrap .slide .title-wrap > .title1-box {}
 #wrap #main #section1 .wrap .gap .container .slide-container .slide-gap .slide-view .slide-wrap .slide .title-wrap > .title1-box > .title1-gap {}
 #wrap #main #section1 .wrap .gap .container .slide-container .slide-gap .slide-view .slide-wrap .slide .title-wrap > .title1-box > .title1-gap > .title1-container {position:relative;text-align:center;}
-#wrap #main #section1 .wrap .gap .container .slide-container .slide-gap .slide-view .slide-wrap .slide .title-wrap .title1-box .title1-gap .title1-container img {opacity:0;width:640px;transition:all 1.5s;}
-#wrap #main #section1 .wrap .gap .container .slide-container .slide-gap .slide-view .slide-wrap .slide .title-wrap .title1-box .title1-gap .title1-container img.addani {opacity:1;width:640px;animation:addani 1.5}
+#wrap #main #section1 .wrap .gap .container .slide-container .slide-gap .slide-view .slide-wrap .slide .title-wrap .title1-box .title1-gap .title1-container img {opacity:0;width:640px;/* transition:all 1.5s; */}
+#wrap #main #section1 .wrap .gap .container .slide-container .slide-gap .slide-view .slide-wrap .slide .title-wrap .title1-box .title1-gap .title1-container img.addani {opacity:1;width:640px;animation:addani 1s}
 @keyframes addani {
     0%{opacity:0;}
     100%{opacity:1;}
@@ -339,11 +340,11 @@
 #wrap #main #section7 .wrap .gap .container .top-gap .top-box h5 {font-size:14px;font-weight:600;color:#c89965;letter-spacing:1px;}
 #wrap #main #section7 .wrap .gap .container .top-gap .top-box h3 {font-size:32.2px;font-weight:500;padding-top:20px;}
 
-#wrap #main #section7 .wrap .gap .container .bottom-gap {}
 #wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box {width:100%;height:100%;}
 #wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap {float:left;width:33.333%;height:553px;}
 #wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap .whole-gap {margin:0 15px;height:100%;}
 #wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap .whole-gap .cont-box {position:relative;top:500px;width:100%;height:100%;background:#fff;transition:all .6s;}
+#wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap .whole-gap .cont-box:last-child {top:600px;}
 #wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap .whole-gap .cont-box.addTop {top:0;}
 #wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap .whole-gap .cont-box .img-box {width:100%;height:50%;}
 #wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap .whole-gap .cont-box .img-box > a {display:block;width:100%;height:100%;}
@@ -351,7 +352,6 @@
 #wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap .whole-gap .cont-box .img-box2 {background:url(../img/hotel-resort-img-18.jpg) no-repeat 50% 50%;background-size:cover;}
 #wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap .whole-gap .cont-box .img-box3 {background:url(../img/hotel-resort-img-19.jpg) no-repeat 50% 50%;background-size:cover;}
 #wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap .whole-gap .cont-box .text-box {padding:50px;}
-#wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap .whole-gap .cont-box .text-box .text-content {}
 #wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap .whole-gap .cont-box .text-box .text-content h4 {font-size:16px;font-weight:500;color:#111;padding-bottom:20px;}
 #wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap .whole-gap .cont-box .text-box .text-content p {font-size:15px;font-weight:400;color:#666;line-height:180%;padding-bottom:20px;border-bottom:1px solid #ccc;}
 #wrap #main #section7 .wrap .gap .container .bottom-gap .bottom-box .whole-wrap .whole-gap .cont-box .text-box .text-content span {display:block;width:100%;padding-top:30px;}
@@ -391,8 +391,6 @@
 #wrap #main #section8 .wrap .sign-box-wrap .sign-up-box {display:inline-block;}
 #wrap #main #section8 .wrap .sign-box-wrap .sign-up-box .sign-gap {margin:0 15px;}
 #wrap #main #section8 .wrap .sign-box-wrap .sign-up-box .sign-gap .sign-container {width:100%;max-width:1140px;height:135px;background:#c89965;border-radius:8px;}
-#wrap #main #section8 .wrap .sign-box-wrap .sign-up-box .sign-gap .sign-container table {}
-#wrap #main #section8 .wrap .sign-box-wrap .sign-up-box .sign-gap .sign-container table tr {}
 #wrap #main #section8 .wrap .sign-box-wrap .sign-up-box .sign-gap .sign-container table td.text {padding:42.5px 65px;font-size:25.2px;font-weight:500;color:#222;}
 #wrap #main #section8 .wrap .sign-box-wrap .sign-up-box .sign-gap .sign-container table td.mail {position:relative;padding:42.5px 65px 42.5px 0;width:500px;height:50px;}
 #wrap #main #section8 .wrap .sign-box-wrap .sign-up-box .sign-gap .sign-container table td.mail input {width:100%;height:100%;border-radius:5px;background:#f8f2eb;border:1px solid transparent;color:#aaa;text-indent:30px;font-size:14px;letter-spacing:1px;}
@@ -462,7 +460,7 @@
 #wrap #footer .top .top-wrap .top-gap .top-container .top-container-gap .top-col .top-col-gap .top-content .insta .insta-btn i {margin-right:10px;}
 
 #wrap #footer .bottom .bottom-wrap {width:100%;}
-#wrap #footer .bottom .bottom-wrap .bottom-gap {padding:40px 0;}
+#wrap #footer .bottom .bottom-wrap .bottom-gap {padding:40px 15px;}
 #wrap #footer .bottom .bottom-wrap .bottom-gap .bottom-container {width:100%;max-width:1140px;margin: 0 auto;text-align:center;}
 #wrap #footer .bottom .bottom-wrap .bottom-gap .bottom-container .logo {float:left;}
 #wrap #footer .bottom .bottom-wrap .bottom-gap .bottom-container .logo img {}

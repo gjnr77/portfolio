@@ -92,12 +92,14 @@ var portfolio = {
         var $winIW = $(window).innerWidth();
         var that = this;
         var mode = 0;
+        var pc = 0;
+        var m = 0;
        
-        $winIW > 980 ? mode = 0 : mode = 1;
-
+        $(window).innerWidth() > 980 ? mode = 0 : mode = 1;
+        
         function pcFn(){
              
-            
+            mode=0;
             $nav.stop().show();
             $mainBtn.stop().show();
             $sub.stop().hide();
@@ -155,6 +157,7 @@ var portfolio = {
         } //pc
 
         function mobileFn(){
+            mode=1;
             $mainBtn.off('mouseenter');
             $subsub.off('mouseleave');
             $subsubBtn.off('mouseenter');
@@ -168,32 +171,34 @@ var portfolio = {
             $subsubsub.stop().slideUp();
             $bar.removeClass('addMobile');
 
-            $mainBtn.on({
-                click:function(e){
-                    e.preventDefault();
-                    $sub.stop().slideUp();
-                    $(this).next().stop().slideToggle(300);
-                }
-            });
-
-            $subBtn.on({
-                click:function(e){
-                    e.preventDefault();
-                    $subsub.stop().slideUp();
-                    $(this).next().stop().slideToggle(300);
-                }
-            });
-
-            $subsubBtn.on({
-                click:function(e){
-                    e.preventDefault();
-                    $subsubsub.stop().slideUp();
-                    $(this).next().stop().slideToggle(300);
-                }
-            });
 
         } //mobile
+        
+        function pcMobile(){
+            if($(window).innerWidth() > 980){ //pc
+                // pc=1;
+                // m=0;
+                mode=0;
+                pcFn();
+            }
+            else{ //mobile
+                // pc=0;
+                // m=1;
+                that.btn = 1;
+                mode=1;  
+                mobileFn();
+            }
+        }
 
+        setTimeout(pcMobile, 100);
+
+        $(window).resize(function(){
+
+            setTimeout(pcMobile, 100);
+            // setTimeout(mobileEvent,100);
+            console.log(mode);
+        });
+        
         //모바일 메뉴 버튼
         $mobileBtn.on({
             click:function(){
@@ -204,9 +209,10 @@ var portfolio = {
                 $nav.stop().slideUp();
                 $bar.toggleClass('addMobile');
                 $nav.stop().slideToggle(300);
-                $('.header-bottom').toggleClass('addNavFixed');    
+                $('.header-bottom').toggleClass('addNavFixed'); 
+                $('.logo-box').toggleClass('addNavFixed')   ;
                 $('#wrap').toggleClass('addfixed');
-                $header.css({position:'fixed'});
+                // $header.css({position:'fixed'});
 
                 return that.btn == 0 ? that.btn = 1 : that.btn = 0;
 
@@ -214,24 +220,36 @@ var portfolio = {
             }
         });
 
+        function mobileEvent(){
+            if(mode==1){
+                $mainBtn.on({
+                    click:function(e){
+                        e.preventDefault();
+                        $sub.stop().slideUp();
+                        $(this).next().stop().slideToggle(300);
+                    }
+                });
 
-        function pcMobile(){
-            if($(window).innerWidth() > 980){ //pc
-                
-                pcFn();
-            }
-            else{ //mobile
-                
-                mobileFn();
+                $subBtn.on({
+                    click:function(e){
+                        e.preventDefault();
+                        $subsub.stop().slideUp();
+                        $(this).next().stop().slideToggle(300);
+                    }
+                });
+
+                $subsubBtn.on({
+                    click:function(e){
+                        e.preventDefault();
+                        $subsubsub.stop().slideUp();
+                        $(this).next().stop().slideToggle(300);
+                    }
+                });
             }
         }
+        setTimeout(mobileEvent,100);
 
-        setTimeout(pcMobile, 100);
 
-        $(window).resize(function(){
-
-            setTimeout(pcMobile, 100);
-        });
 
 
         //글로브 버튼
@@ -323,6 +341,7 @@ var portfolio = {
             // }
             $section1.css({width:$winW,height:$winH});
             $slide.css({width:$winW});
+            
             $slideWrap.stop().animate({left:-$winW*cnt}, 0)
         }
 
@@ -361,10 +380,12 @@ var portfolio = {
             if(r<1){r=3}
             $textImg.removeClass('addani');
             $textImg.eq(r).addClass('addani');
+
         }
-        setTimeout(textImg,600);
+        setTimeout(textImg,500);
         
         function mainSlideFn(){
+
                 $slideWrap.stop().animate({left:-$winW*cnt}, 500,function(){
                     if(cnt>n){cnt=0}
                     if(cnt<0){cnt=n}
@@ -373,11 +394,12 @@ var portfolio = {
                     $('#section1 .slide-view').removeClass('addColor');
                     setTimeout(textImg,500);
                     setId4 = setTimeout(btnAdd,1000);
-    
                 });
                 
                 imgScale();
                 colorPageFn();
+            
+
 
             
         }
@@ -425,6 +447,7 @@ var portfolio = {
         $prevBtn.on({
             click:function(){
                 if(!$slideWrap.is(':animated')){
+                    $textImg.removeClass('addani');
                     pause();
                     prevCountFn();
                 }
@@ -478,11 +501,9 @@ var portfolio = {
       function pause(){
           clearInterval(setId);
           clearInterval(setId2);
-          clearTimeout(setId4)
           setId2 = setInterval(function(){
             clearInterval(setId);
             clearInterval(setId2);
-            clearTimeout(setId4)
             nextCountFn();
             autoPlay();
           }, 5000);
@@ -535,7 +556,7 @@ var portfolio = {
                 $('#section3 .col').removeClass('addSection3');
             }
         
-            if($(window).scrollTop() >= $('#section3').offset().top-500){
+            if($(window).scrollTop() >= $('#section3').offset().top-600){
                 $('#section3 .col').eq(0).addClass('addSection3');
                 $('#section3 .col').eq(1).addClass('addSection3');
                 $('#section3 .col').eq(2).addClass('addSection3');
@@ -700,7 +721,7 @@ var portfolio = {
 
         //scroll
         $(window).scroll(function(){
-            if($(window).scrollTop()==0){
+            if($(window).scrollTop()<=10){
                 $topCon.stop().fadeOut(0);
                 $liBox.removeClass('addEvent');
             }
@@ -709,7 +730,7 @@ var portfolio = {
             }
                 
             
-            if($(window).scrollTop()>=$('#section6').offset().top-300){
+            if($(window).scrollTop()>=$('#section6').offset().top-500){
                 
                 $liBox.each(function(idx){
                     setTimeout(function(){
@@ -725,17 +746,20 @@ var portfolio = {
         var $contBox = $('#section7 .cont-box');
 
         $(window).scroll(function(){
-            if($(window).scrollTop()==0){
+            if($(window).scrollTop()<=10){
                 $topBox.stop().fadeOut(0);
                 $contBox.removeClass('addTop');
+                $contBox.eq(2).removeClass('addTop')
+                console.log($contBox.eq(2).hasClass('addTop'));
 
             }
             if($(window).scrollTop()>=$('#section7').offset().top-500){
                 $topBox.stop().fadeIn(400);
             }
-            if($(window).scrollTop()>=$('#section7').offset().top-300){
+            if($(window).scrollTop()>=$('#section7').offset().top-400){
                 $contBox.each(function(idx){
                     setTimeout(function(){
+                        
                         $contBox.eq(idx).addClass('addTop');
                     },200*idx);
                 })
@@ -754,7 +778,7 @@ var portfolio = {
 
 
         function backFn(){
-            if($(window).innerWidth() < 760){
+            if($(window).innerWidth() < 1100){
                 $section8.css({backgroundAttachment:"scroll"});
             }
             else{
