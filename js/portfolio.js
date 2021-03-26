@@ -113,7 +113,7 @@ var portfolio = {
                     e.preventDefault();
                     $sub.stop().hide();
                     $(this).next().stop().show();
-                }
+                },    
             });
 
             $nav.on({
@@ -211,7 +211,8 @@ var portfolio = {
                 $nav.stop().slideToggle(300);
                 $('.header-bottom').toggleClass('addNavFixed'); 
                 $('.logo-box').toggleClass('addNavFixed')   ;
-                $('#wrap').toggleClass('addfixed');
+                // $('#wrap').toggleClass('addfixed');
+                $('.header-top').toggleClass('addNavFixed'); 
                 // $header.css({position:'fixed'});
 
                 return that.btn == 0 ? that.btn = 1 : that.btn = 0;
@@ -226,6 +227,7 @@ var portfolio = {
                     click:function(e){
                         e.preventDefault();
                         $sub.stop().slideUp();
+                        $subsub.stop().slideUp();
                         $(this).next().stop().slideToggle(300);
                     }
                 });
@@ -234,6 +236,7 @@ var portfolio = {
                     click:function(e){
                         e.preventDefault();
                         $subsub.stop().slideUp();
+                        $subsubsub.stop().slideUp();
                         $(this).next().stop().slideToggle(300);
                     }
                 });
@@ -778,7 +781,7 @@ var portfolio = {
 
 
         function backFn(){
-            if($(window).innerWidth() < 1100){
+            if($(window).innerWidth() < 1200){
                 $section8.css({backgroundAttachment:"scroll"});
             }
             else{
