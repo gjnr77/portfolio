@@ -191,13 +191,6 @@ var portfolio = {
         }
 
         setTimeout(pcMobile, 100);
-
-        $(window).resize(function(){
-
-            setTimeout(pcMobile, 100);
-            // setTimeout(mobileEvent,100);
-            console.log(mode);
-        });
         
         //모바일 메뉴 버튼
         $mobileBtn.on({
@@ -228,6 +221,7 @@ var portfolio = {
                         e.preventDefault();
                         $sub.stop().slideUp();
                         $subsub.stop().slideUp();
+                        $subsubsub.stop().slideUp();
                         $(this).next().stop().slideToggle(300);
                     }
                 });
@@ -252,8 +246,11 @@ var portfolio = {
         }
         setTimeout(mobileEvent,100);
 
+        $(window).resize(function(){
 
-
+            setTimeout(pcMobile, 100);
+            // console.log(mode);
+        });
 
         //글로브 버튼
         var $globeWrap = $('#header .globe-wrap');
@@ -401,9 +398,6 @@ var portfolio = {
                 
                 imgScale();
                 colorPageFn();
-            
-
-
             
         }
 
