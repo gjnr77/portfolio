@@ -186,9 +186,9 @@ var portfolio = {
             click:function(){
                 if($(window).innerWidth() <= 980){ 
                 $nav.stop().slideUp();
-                // $sub.stop().slideUp(100);
-                // $subsub.stop().slideUp(100);
-                // $subsubsub.stop().slideUp(100);
+                $sub.stop().slideUp();
+                $subsub.stop().slideUp();
+                $subsubsub.stop().slideUp();
                 $bar.toggleClass('addMobile');
                 $nav.stop().slideToggle(300);
                 $('.header-bottom').toggleClass('addNavFixed'); 
@@ -202,7 +202,7 @@ var portfolio = {
                 }
             }
         });
-        
+
         $mainBtn.on({
             click:function(e){
                 e.preventDefault();
