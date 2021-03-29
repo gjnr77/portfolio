@@ -96,16 +96,20 @@ var portfolio = {
         var m = 0;
        
         $(window).innerWidth() > 980 ? mode = 0 : mode = 1;
-        
+
         function pcFn(){
              
-            mode=0;
+            pc=1;
             $nav.stop().show();
             $mainBtn.stop().show();
             $sub.stop().hide();
             $subsub.stop().hide();
             $subsubsub.stop().hide();
+            // $mainBtn.off('click');
+            // $subBtn.off('click');
+            // $subsubBtn.off('click');
            
+
 
             //메인 버튼
             $mainBtn.on({
@@ -157,49 +161,34 @@ var portfolio = {
         } //pc
 
         function mobileFn(){
-            mode=1;
+            m=1;
             $mainBtn.off('mouseenter');
-            $subsub.off('mouseleave');
-            $subsubBtn.off('mouseenter');
+            $subBtn.off('mouseenter')
             $subsub.off('mouseleave');
             $subsubBtn.off('mouseenter');
             $subsubsub.off('mouseleave');
+            $nav.off('mouseleave')
 
-            $nav.stop().slideUp();
-            $sub.stop().slideUp();
-            $subsub.stop().slideUp();
-            $subsubsub.stop().slideUp();
+
+            $nav.stop().slideUp(100);
+            // $sub.stop().slideUp(0);
+            // $subsub.stop().slideUp(0);
+            // $subsubsub.stop().slideUp(0);
             $bar.removeClass('addMobile');
+           
 
 
         } //mobile
         
-        function pcMobile(){
-            if($(window).innerWidth() > 980){ //pc
-                // pc=1;
-                // m=0;
-                mode=0;
-                pcFn();
-            }
-            else{ //mobile
-                // pc=0;
-                // m=1;
-                that.btn = 1;
-                mode=1;  
-                mobileFn();
-            }
-        }
-
-        setTimeout(pcMobile, 100);
         
         //모바일 메뉴 버튼
         $mobileBtn.on({
             click:function(){
                 if($(window).innerWidth() <= 980){ 
-                $sub.stop().slideUp();
-                $subsub.stop().slideUp();
-                $subsubsub.stop().slideUp();
                 $nav.stop().slideUp();
+                // $sub.stop().slideUp(100);
+                // $subsub.stop().slideUp(100);
+                // $subsubsub.stop().slideUp(100);
                 $bar.toggleClass('addMobile');
                 $nav.stop().slideToggle(300);
                 $('.header-bottom').toggleClass('addNavFixed'); 
@@ -213,44 +202,64 @@ var portfolio = {
                 }
             }
         });
+        
+        $mainBtn.on({
+            click:function(e){
+                e.preventDefault();
+                $sub.stop().slideUp(100);
+                $subsub.stop().slideUp(100);
+                $subsubsub.stop().slideUp(100);
+                $(this).next().stop().slideToggle(300);
 
-        function mobileEvent(){
-            if(mode==1){
-                $mainBtn.on({
-                    click:function(e){
-                        e.preventDefault();
-                        $sub.stop().slideUp();
-                        $subsub.stop().slideUp();
-                        $subsubsub.stop().slideUp();
-                        $(this).next().stop().slideToggle(300);
-                    }
-                });
+            }
+        });
 
-                $subBtn.on({
-                    click:function(e){
-                        e.preventDefault();
-                        $subsub.stop().slideUp();
-                        $subsubsub.stop().slideUp();
-                        $(this).next().stop().slideToggle(300);
-                    }
-                });
+        $subBtn.on({
+            click:function(e){
+                e.preventDefault();
+                $subsub.stop().slideUp(100);
+                $subsubsub.stop().slideUp(100);
+                $(this).next().stop().slideToggle(300);
+            }
+        });
 
-                $subsubBtn.on({
-                    click:function(e){
-                        e.preventDefault();
-                        $subsubsub.stop().slideUp();
-                        $(this).next().stop().slideToggle(300);
-                    }
-                });
+        $subsubBtn.on({
+            click:function(e){
+                e.preventDefault();
+                $subsubsub.stop().slideUp(100);
+                $(this).next().stop().slideToggle(300);
+            }
+        });
+
+        function pcMobile(){
+            if($(window).innerWidth() > 980){ //pc
+                pc=1;
+                m=0;
+                that.btn = 0;
+                // mode=0;
+                pcFn();
+            }
+            else{ //mobile
+                pc=0;
+                m=1;
+                // mode=1;  
+                mobileFn();
             }
         }
-        setTimeout(mobileEvent,100);
+
+        setTimeout(pcMobile, 100);
 
         $(window).resize(function(){
 
             setTimeout(pcMobile, 100);
-            // console.log(mode);
+            console.log(mode);
         });
+
+        // window.addEventListener('orientationchange',function(){
+        //     setTimeout(pcMobile, 100);
+        // })
+
+
 
         //글로브 버튼
         var $globeWrap = $('#header .globe-wrap');
@@ -747,7 +756,6 @@ var portfolio = {
                 $topBox.stop().fadeOut(0);
                 $contBox.removeClass('addTop');
                 $contBox.eq(2).removeClass('addTop')
-                console.log($contBox.eq(2).hasClass('addTop'));
 
             }
             if($(window).scrollTop()>=$('#section7').offset().top-500){
